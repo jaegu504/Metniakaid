@@ -1,0 +1,216 @@
+/* Impor Font dari Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+    /* -- WARNA QUDURI (YANG LAMA) -- */
+    --primary-bg: #FFFFFF;
+    --secondary-bg: #F0F4F7;
+    --tertiary-bg: #FFFFFF;
+    --primary-text: #333333;
+    --border-color: #DDE6ED;
+    --header-bg: #FFFFFF;
+    --header-text-title: #2A7A72;
+    --header-btn-color: #5F6368;
+    --header-btn-hover-bg: #E8F0FE;
+    --lang-toggle-btn-bg: #1fb3a4; /* Tombol Bahasa */
+    --lang-toggle-btn-text: #FFFFFF;
+    --lang-toggle-btn-hover-bg: #18897b;
+    --category-button-bg: #E8F5F4; /* Tombol Kategori */
+    --category-button-text: #2A7A72;
+    --category-button-border: #2A7A72;
+    --category-button-hover-bg: #D0E5E3;
+    --category-button-active-bg: #2A7A72;
+    --category-button-active-text: #FFFFFF;
+    --controls-button-bg: #1fb3a4; /* Tombol Kontrol */
+    --controls-button-text: #FFFFFF;
+    --controls-button-hover-bg: #18897b;
+
+    /* -- FONT & UKURAN DARI GAYA MANAR -- */
+    --font-family-osmanlica: 'Amiri', 'Times New Roman', serif;
+    --font-family-latin: 'Outfit', 'Arial', sans-serif;
+    --header-button-height: 38px;
+    --header-button-min-width: 40px;
+    --header-button-padding-x: 10px;
+    --lang-button-padding-x: 18px;
+    --header-button-height-mobile: 34px;
+    --header-button-min-width-mobile: 36px;
+    --header-button-padding-x-mobile: 8px;
+    --lang-button-padding-x-mobile: 14px;
+}
+
+[data-theme="dark"] {
+    /* -- WARNA QUDURI (YANG LAMA) - MODE GELAP -- */
+    --primary-bg: #121212;
+    --secondary-bg: #1E1E1E;
+    --tertiary-bg: #2C2C2C;
+    --primary-text: #E0E0E0;
+    --border-color: #424242;
+    --header-bg: #1E1E1E;
+    --header-text-title: #58C0B6;
+    --header-btn-color: #B0B0B0;
+    --header-btn-hover-bg: #333333;
+    --lang-toggle-btn-bg: #21c9b6;
+    --lang-toggle-btn-text: #121212;
+    --lang-toggle-btn-hover-bg: #1fb3a4;
+    --category-button-bg: #2A7A72;
+    --category-button-text: #FFFFFF;
+    --category-button-border: #2A7A72;
+    --category-button-hover-bg: #3B8A82;
+    --category-button-active-bg: #58C0B6;
+    --category-button-active-text: #000000;
+    --controls-button-bg: #21c9b6;
+    --controls-button-text: #121212;
+    --controls-button-hover-bg: #1fb3a4;
+}
+
+body {
+    margin: 0;
+    background-color: var(--primary-bg);
+    color: var(--primary-text);
+    line-height: 1.8;
+    transition: background-color 0.3s, color 0.3s;
+    font-family: var(--font-family-latin);
+}
+
+/* Sisa styling font per bahasa, dll */
+html[lang="ota"] body { font-family: var(--font-family-osmanlica); }
+html[lang="ota"] .header-btn, html[lang="ota"] .category-btn, html[lang="ota"] .controls button, html[lang="ota"] #questionText, html[lang="ota"] #answerText { font-family: var(--font-family-osmanlica); }
+html[lang="id"] .header-btn, html[lang="id"] .category-btn, html[lang="id"] .controls button, html[lang="id"] #questionText, html[lang="id"] #answerText { font-family: var(--font-family-latin); }
+
+/* --- HEADER BARU (GAYA MANAR) --- */
+header {
+    background-color: var(--header-bg);
+    padding: 10px 15px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky; top: 0; z-index: 1001;
+    width: 100%; box-sizing: border-box;
+}
+.header-controls-left { display: flex; align-items: center; gap: 8px; }
+header h1#mainTitle {
+    font-weight: normal; color: var(--header-text-title); font-size: 1.8em;
+    margin: 0; text-align: center; overflow: hidden;
+    text-overflow: ellipsis; white-space: nowrap;
+}
+html[lang="id"] header h1#mainTitle { font-size: 1.6em; }
+#darkModeToggle { justify-self: end; }
+.header-btn {
+    background: none; border: 1px solid var(--header-btn-color);
+    color: var(--header-btn-color); min-width: var(--header-button-min-width);
+    padding: 0 var(--header-button-padding-x); height: var(--header-button-height);
+    box-sizing: border-box; cursor: pointer; border-radius: 5px;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    white-space: nowrap; display: inline-flex; align-items: center;
+    justify-content: center; font-size: 1em;
+    line-height: var(--header-button-height);
+}
+.header-btn:hover { background-color: var(--header-btn-hover-bg); border-color: var(--header-btn-hover-bg); }
+#darkModeToggle { padding: 0; }
+#darkModeToggle svg { width: 1.2em; height: 1.2em; stroke: currentColor; }
+
+/* -- CARA BARU GANTI IKON DENGAN CSS -- */
+#darkModeToggle .moon-icon { display: none; }
+#darkModeToggle .sun-icon { display: block; }
+[data-theme="dark"] #darkModeToggle .sun-icon { display: none; }
+[data-theme="dark"] #darkModeToggle .moon-icon { display: block; }
+
+/* -- TOMBOL BAHASA & HAMBURGER (GAYA MANAR) -- */
+#languageToggleBtn {
+    background-color: var(--lang-toggle-btn-bg);
+    color: var(--lang-toggle-btn-text);
+    border: none; padding: 0 var(--lang-button-padding-x);
+    min-width: auto; height: var(--header-button-height);
+    border-radius: 6px; font-weight: 700; font-family: var(--font-family-latin);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1); font-size: 0.9em;
+}
+#languageToggleBtn:hover { background-color: var(--lang-toggle-btn-hover-bg); box-shadow: 0 2px 4px rgba(0,0,0,0.15); }
+#hamburgerBtn { font-size: 1.2em; padding: 0; }
+
+/* --- CONTAINER, SIDEBAR, KONTEN (GAYA MANAR) --- */
+.container { display: flex; }
+aside#sidebar {
+    width: 280px; background-color: var(--secondary-bg); padding: 20px;
+    height: calc(100vh - 60px);
+    overflow-y: auto; box-sizing: border-box; position: sticky;
+    top: 60px;
+    transition: background-color 0.3s, transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+html[dir="rtl"] aside#sidebar { border-left: 1px solid var(--border-color); }
+html[dir="ltr"] aside#sidebar { border-right: 1px solid var(--border-color); }
+aside#sidebar nav { display: flex; flex-direction: column; }
+.category-btn {
+    background-color: var(--category-button-bg); color: var(--category-button-text);
+    border: 1px solid var(--category-button-border); padding: 12px 15px;
+    margin-bottom: 10px; cursor: pointer; font-size: 1.1em;
+    border-radius: 4px; transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    font-weight: normal;
+}
+html[dir="rtl"] .category-btn { text-align: right; }
+html[dir="ltr"] .category-btn { text-align: left; }
+.category-btn:hover { background-color: var(--category-button-hover-bg); border-color: var(--category-button-hover-bg); box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1), 0 1px 3px 1px rgba(0,0,0,0.08); }
+.category-btn.active-category, .category-btn[data-category="all"] {
+    background-color: var(--category-button-active-bg); color: var(--category-button-active-text);
+    font-weight: bold; border-color: transparent;
+}
+.category-btn[data-category="all"] { margin-top: 15px; }
+.category-btn[data-category="all"]:hover { background-color: var(--category-button-hover-bg); border-color: var(--category-button-hover-bg); opacity: 1; }
+main#mainContent { flex-grow: 1; padding: 30px; display: flex; flex-direction: column; align-items: center; }
+#questionContainer, #answerContainer {
+    background-color: var(--tertiary-bg); padding: 25px; margin-bottom: 20px;
+    border-radius: 8px; width: 100%; max-width: 700px;
+    box-shadow: 0 2px 4px rgba(57, 30, 16, 0.1);
+    min-height: 100px; box-sizing: border-box; border: 1px solid var(--border-color);
+}
+#questionText, #answerText { font-size: 1.4em; margin: 0; white-space: pre-line; }
+.controls { display: flex; gap: 15px; }
+.controls button {
+    background-color: var(--controls-button-bg); color: var(--controls-button-text);
+    border: none; padding: 12px 22px; font-size: 1em; border-radius: 6px;
+    cursor: pointer; transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+    text-transform: uppercase; font-weight: bold; box-shadow: 0 2px 4px rgba(57, 30, 16, 0.1);
+    font-family: var(--font-family-latin);
+}
+.controls button:hover:not(:disabled) { background-color: var(--controls-button-hover-bg); box-shadow: 0 4px 8px rgba(57, 30, 16, 0.15); }
+.controls button:disabled { background-color: #ccc; color: #888; cursor: not-allowed; opacity: 0.7; border: none; box-shadow: none; }
+
+/* --- MOBILE (GAYA MANAR) --- */
+#hamburgerBtn { display: block; }
+@media (min-width: 769px) { #hamburgerBtn { display: none; } }
+@media (max-width: 768px) {
+    header { padding: 8px 10px; gap: 6px; }
+    header h1#mainTitle { font-size: 1.3em !important; }
+    html[lang="id"] header h1#mainTitle { font-size: 1.2em !important; }
+    .header-btn {
+        padding: 0 var(--header-button-padding-x-mobile);
+        min-width: var(--header-button-min-width-mobile);
+        height: var(--header-button-height-mobile);
+        font-size: 0.9em;
+        line-height: var(--header-button-height-mobile);
+    }
+    #languageToggleBtn { font-size: 0.85em; padding: 0 var(--lang-button-padding-x-mobile); }
+    #darkModeToggle { min-width: var(--header-button-min-width-mobile); padding: 0; }
+    #darkModeToggle svg { width: 1.1em; height: 1.1em; }
+    #hamburgerBtn { font-size: 1.1em; min-width: var(--header-button-min-width-mobile); padding: 0; }
+    aside#sidebar {
+        position: fixed; left: 0; right: 0; bottom: 0;
+        width: 100%; max-height: 55vh;
+        box-shadow: 0 -2px 8px rgba(57, 30, 16, 0.15);
+        border-top-left-radius: 16px; border-top-right-radius: 16px;
+        padding: 15px; padding-bottom: calc(15px + env(safe-area-inset-bottom));
+        overflow-y: auto; z-index: 1000;
+        transform: translateY(100%);
+        transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        height: auto; border-right: none;
+    }
+    aside#sidebar.open { transform: translateY(0%); }
+    aside#sidebar nav { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px; }
+    aside#sidebar .category-btn { font-size: 0.85em; padding: 8px 10px; margin-bottom: 0; }
+    aside#sidebar .category-btn[data-category="all"] { grid-column: 1 / -1; text-align: center; margin-top: 8px; }
+    main#mainContent { padding: 15px; padding-bottom: 80px; }
+    #questionText, #answerText { font-size: 1.15em; }
+    .controls button { padding: 10px 18px; font-size: 0.95em; }
+}
