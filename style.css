@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root {
-    /* -- WARNA QUDURI (YANG LAMA) -- */
+    /* -- WARNA QUDURI (HIJAU TOSKA) -- */
     --primary-bg: #FFFFFF;
     --secondary-bg: #F0F4F7;
     --tertiary-bg: #FFFFFF;
@@ -40,7 +40,7 @@
 }
 
 [data-theme="dark"] {
-    /* -- WARNA QUDURI (YANG LAMA) - MODE GELAP -- */
+    /* -- WARNA QUDURI (HIJAU TOSKA) - MODE GELAP -- */
     --primary-bg: #121212;
     --secondary-bg: #1E1E1E;
     --tertiary-bg: #2C2C2C;
@@ -73,12 +73,11 @@ body {
     font-family: var(--font-family-latin);
 }
 
-/* Sisa styling font per bahasa, dll */
 html[lang="ota"] body { font-family: var(--font-family-osmanlica); }
 html[lang="ota"] .header-btn, html[lang="ota"] .category-btn, html[lang="ota"] .controls button, html[lang="ota"] #questionText, html[lang="ota"] #answerText { font-family: var(--font-family-osmanlica); }
 html[lang="id"] .header-btn, html[lang="id"] .category-btn, html[lang="id"] .controls button, html[lang="id"] #questionText, html[lang="id"] #answerText { font-family: var(--font-family-latin); }
 
-/* --- HEADER BARU (GAYA MANAR) --- */
+/* --- HEADER (GAYA MANAR) --- */
 header {
     background-color: var(--header-bg);
     padding: 10px 15px;
@@ -111,14 +110,10 @@ html[lang="id"] header h1#mainTitle { font-size: 1.6em; }
 .header-btn:hover { background-color: var(--header-btn-hover-bg); border-color: var(--header-btn-hover-bg); }
 #darkModeToggle { padding: 0; }
 #darkModeToggle svg { width: 1.2em; height: 1.2em; stroke: currentColor; }
-
-/* -- CARA BARU GANTI IKON DENGAN CSS -- */
 #darkModeToggle .moon-icon { display: none; }
 #darkModeToggle .sun-icon { display: block; }
 [data-theme="dark"] #darkModeToggle .sun-icon { display: none; }
 [data-theme="dark"] #darkModeToggle .moon-icon { display: block; }
-
-/* -- TOMBOL BAHASA & HAMBURGER (GAYA MANAR) -- */
 #languageToggleBtn {
     background-color: var(--lang-toggle-btn-bg);
     color: var(--lang-toggle-btn-text);
@@ -130,7 +125,7 @@ html[lang="id"] header h1#mainTitle { font-size: 1.6em; }
 #languageToggleBtn:hover { background-color: var(--lang-toggle-btn-hover-bg); box-shadow: 0 2px 4px rgba(0,0,0,0.15); }
 #hamburgerBtn { font-size: 1.2em; padding: 0; }
 
-/* --- CONTAINER, SIDEBAR, KONTEN (GAYA MANAR) --- */
+/* --- CONTAINER & SIDEBAR (DESKTOP) --- */
 .container { display: flex; }
 aside#sidebar {
     width: 280px; background-color: var(--secondary-bg); padding: 20px;
@@ -142,6 +137,17 @@ aside#sidebar {
 html[dir="rtl"] aside#sidebar { border-left: 1px solid var(--border-color); }
 html[dir="ltr"] aside#sidebar { border-right: 1px solid var(--border-color); }
 aside#sidebar nav { display: flex; flex-direction: column; }
+
+/* --- KONTEN UTAMA --- */
+main#mainContent { flex-grow: 1; padding: 30px; display: flex; flex-direction: column; align-items: center; }
+#questionContainer, #answerContainer {
+    background-color: var(--tertiary-bg); padding: 25px; margin-bottom: 20px;
+    border-radius: 8px; width: 100%; max-width: 700px;
+    box-shadow: 0 2px 4px rgba(57, 30, 16, 0.1);
+    min-height: 100px; box-sizing: border-box; border: 1px solid var(--border-color);
+}
+#questionText, #answerText { font-size: 1.4em; margin: 0; white-space: pre-line; }
+html[dir="rtl"] #questionText, html[dir="rtl"] #answerText { text-align: right; }
 .category-btn {
     background-color: var(--category-button-bg); color: var(--category-button-text);
     border: 1px solid var(--category-button-border); padding: 12px 15px;
@@ -158,14 +164,6 @@ html[dir="ltr"] .category-btn { text-align: left; }
 }
 .category-btn[data-category="all"] { margin-top: 15px; }
 .category-btn[data-category="all"]:hover { background-color: var(--category-button-hover-bg); border-color: var(--category-button-hover-bg); opacity: 1; }
-main#mainContent { flex-grow: 1; padding: 30px; display: flex; flex-direction: column; align-items: center; }
-#questionContainer, #answerContainer {
-    background-color: var(--tertiary-bg); padding: 25px; margin-bottom: 20px;
-    border-radius: 8px; width: 100%; max-width: 700px;
-    box-shadow: 0 2px 4px rgba(57, 30, 16, 0.1);
-    min-height: 100px; box-sizing: border-box; border: 1px solid var(--border-color);
-}
-#questionText, #answerText { font-size: 1.4em; margin: 0; white-space: pre-line; }
 .controls { display: flex; gap: 15px; }
 .controls button {
     background-color: var(--controls-button-bg); color: var(--controls-button-text);
@@ -177,7 +175,7 @@ main#mainContent { flex-grow: 1; padding: 30px; display: flex; flex-direction: c
 .controls button:hover:not(:disabled) { background-color: var(--controls-button-hover-bg); box-shadow: 0 4px 8px rgba(57, 30, 16, 0.15); }
 .controls button:disabled { background-color: #ccc; color: #888; cursor: not-allowed; opacity: 0.7; border: none; box-shadow: none; }
 
-/* --- MOBILE (GAYA MANAR) --- */
+/* --- MOBILE & PERBAIKAN BUG SIDEBAR --- */
 #hamburgerBtn { display: block; }
 @media (min-width: 769px) { #hamburgerBtn { display: none; } }
 @media (max-width: 768px) {
@@ -195,30 +193,30 @@ main#mainContent { flex-grow: 1; padding: 30px; display: flex; flex-direction: c
     #darkModeToggle { min-width: var(--header-button-min-width-mobile); padding: 0; }
     #darkModeToggle svg { width: 1.1em; height: 1.1em; }
     #hamburgerBtn { font-size: 1.1em; min-width: var(--header-button-min-width-mobile); padding: 0; }
+    
+    /* --- INI BAGIAN PERBAIKANNYA --- */
     aside#sidebar {
-        position: fixed;
-        left: 0;
-        right: 0;
-        /* Properti 'bottom: 0;' sudah dihapus dari sini */
-        width: 100%;
+        position: fixed; 
+        left: 0; 
+        right: 0; 
+        /* 'bottom: 0;' yang jadi masalah sudah dihapus dari sini */
+        width: 100%; 
         max-height: 55vh;
-        background-color: var(--secondary-bg); /* Ini juga sebaiknya ada */
+        background-color: var(--secondary-bg);
         box-shadow: 0 -2px 8px rgba(0,0,0,0.15);
-        border-top-left-radius: 16px;
-        border-top-right-radius: 16px;
-        padding: 15px;
-        padding-bottom: calc(15px + env(safe-area-inset-bottom));
-        box-sizing: border-box;
-        overflow-y: auto;
-        z-index: 1000;
-        transform: translateY(100%); /* Sembunyi ke bawah */
+        border-top-left-radius: 16px; border-top-right-radius: 16px;
+        padding: 15px; padding-bottom: calc(15px + env(safe-area-inset-bottom));
+        overflow-y: auto; z-index: 1000;
+        transform: translateY(100%); /* Sembunyikan ke bawah */
         transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        height: auto;
+        height: auto; 
         border-right: none;
-        top: auto; /* Tambahkan ini untuk memastikan */
+        top: auto; 
     }
-
-    aside#sidebar.open { transform: translateY(0%); }
+    aside#sidebar.open { 
+        transform: translateY(0%); /* Munculkan ke atas */
+    }
+    
     aside#sidebar nav { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px; }
     aside#sidebar .category-btn { font-size: 0.85em; padding: 8px 10px; margin-bottom: 0; }
     aside#sidebar .category-btn[data-category="all"] { grid-column: 1 / -1; text-align: center; margin-top: 8px; }
