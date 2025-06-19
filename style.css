@@ -196,7 +196,7 @@ main#mainContent { flex-grow: 1; padding: 30px; display: flex; flex-direction: c
     #darkModeToggle svg { width: 1.1em; height: 1.1em; }
     #hamburgerBtn { font-size: 1.1em; min-width: var(--header-button-min-width-mobile); padding: 0; }
     aside#sidebar {
-        position: fixed; left: 0; right: 0; bottom: 0;
+        position: fixed; left: 0; right: 0;
         width: 100%; max-height: 55vh;
         box-shadow: 0 -2px 8px rgba(57, 30, 16, 0.15);
         border-top-left-radius: 16px; border-top-right-radius: 16px;
